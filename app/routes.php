@@ -15,3 +15,8 @@ $app['router']->get('/', function() use ($app)
 {
    return View::make('hello');
 });
+
+Route::get('register',[
+	'as' => 'register_path',
+	'uses' => 'RegistrationController@create'
+]);
