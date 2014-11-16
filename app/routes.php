@@ -15,3 +15,5 @@ $app['router']->get('/', function() use ($app)
 {
    return View::make('hello');
 });
+
+Route::get('directory', 'UserController@index');
