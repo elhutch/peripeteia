@@ -11,9 +11,49 @@
 |
 */
 
-$app['router']->get('/', function() use ($app)
+/*
+|--------------------------------------------------------------------------
+| Page Routes
+|--------------------------------------------------------------------------
+*/
+Route::get ('/',     'PageController@index');
+Route::get ('login', 'PageController@login');
+
+
+/*
+|--------------------------------------------------------------------------
+| Course Outline Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(array('before' => 'auth'), function()
 {
-   return View::make('hello');
+   Route::get ('courseoutline/create', array(
+         'uses' => 'CourseOutlineController@create'
+      )
+   );
+   Route::get ('courseoutline/show', array(
+         'uses' => 'CourseOutlineController@show'
+      )
+   );
+   Route::post('courseoutline/store', array(
+         'uses' => 'CourseOutlineController@store'
+      )
+   );
 });
 
+
 Route::get('directory', 'UserController@index');
+
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+*/
+Route::post('login', 'AuthController@validate');
+Route::get ('logout', array(
+      'before' => 'auth',
+      'uses' => 'AuthController@logout'
+   )
+);
+
