@@ -48,6 +48,7 @@ Route::group(array('before' => 'auth'), function()
 |--------------------------------------------------------------------------
 */
 Route::get('directory', 'UserController@index');
+Route::post('directory/search', 'UserController@search');
 
 
 /*

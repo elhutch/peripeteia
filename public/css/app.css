@@ -14284,12 +14284,10 @@ th.hide-for-touch {
   padding-top: 41px;
   margin-bottom: 0; }
   .search input {
-    padding-left: 240px; }
+    padding-left: 120px; }
   .search .keyword {
     position: absolute;
-    width: 100px;
-    margin-left: 10px;
-    margin-top: 17px; }
+    width: 110px; }
   .search i {
     position: absolute;
     margin-left: 207px;
