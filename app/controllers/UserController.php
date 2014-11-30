@@ -49,8 +49,10 @@ class UserController extends BaseController
                     ->where('last_name', 'LIKE', "$filterText[1]%")
                     ->get();
             }
+
             return Redirect::action('UserController@index')
                 ->with('users', $users);
+
         }
 
 
