@@ -5,7 +5,7 @@
  {{ Form::open(array('action' => 'UserController@search')) }}
 
 <div class="row search">
-  <div class=" small-12 columns">
+  <div class="small-12 columns">
 
     <div class="row collapse">
       <!-- Search field -->
@@ -28,15 +28,33 @@
 </div>
 
    {{Form::close()}}
-
-@if(!empty($allusers))
-
-  @foreach ($allusers as $value)
-  {{$value->first_name}}
-  {{$value->last_name}}
-  {{$value->office}}
-  {{$value->email}}
-  @endforeach
-@else
-  {{"No results match your search."}}
-@endif
+<div class="row">
+  <div class="small-12 columns">
+    @if(!empty($allusers))
+    <table>
+      <thead>
+        <tr>
+          <th width="250">First Name</th>
+          <th width="250">Last Name</th>
+          <th width ="100">Office</th>
+          <th width="200">Office Hours</th>
+          <th width="250">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($allusers as $value)
+        <tr>
+          <td>{{$value->first_name}}</td>
+          <td>{{$value->last_name}}</td>
+          <td>{{$value->office}}</td>
+          <td></td>
+          <td>{{$value->email}}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+    @else
+    {{"No results match your search."}}
+    @endif
+  </div>
+</div>
