@@ -5,7 +5,7 @@
         <span class="error" ng-show="authError.error">
           <span>{{ authError.error }}</span>
         </span>
-        <input id="username" type="email" ng-model="loginData.email"/>
+        <input id="username" type="text" ng-model="loginData.email"/>
         <!--password-->
         <input id="password" type="password" ng-model="loginData.password"/>
         <!--submit-->

@@ -20,15 +20,6 @@ class UserController extends BaseController
 
     public function search()
     {
-<<<<<<< HEAD
-        $searchFilter = Input::all();
-        $filterText = $searchFilter['filter_text'];
-        $users = DB::table('users')
-                   ->where($searchFilter['filter'], 'LIKE', "$filterText%")
-                   ->get();
-        return Redirect::action('UserController@index')
-                       ->with('users', $users);
-=======
         $rules = [
             'filter_text' => array('required', 'regex:/^\s*[a-zA-Z]+\s*[a-zA-Z]*\s*$/')
         ];
@@ -66,6 +57,5 @@ class UserController extends BaseController
 
 
 
->>>>>>> 929af2ce36cd7cd3ce2a20542974995d7501eacd
     }
 }
