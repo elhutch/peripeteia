@@ -44,8 +44,14 @@ class AuthController extends BaseController {
 	 */
 	public function validate()
 	{
+		$return_array;
+
 		$rules = [
-			'username' => 'required',
+<<<<<<< HEAD
+			'email' => 'required|email',
+=======
+			'email' => 'required',
+>>>>>>> 5867cb01d2db15ac460226b8506b6711db8e1057
 			'password' => 'required|alphaNum|min:3'
 		];
 
@@ -55,17 +61,16 @@ class AuthController extends BaseController {
 			return Redirect::to('login')->withErrors($validator)->withInput(Input::except('password'));
 		} else {
 			$userdata = [
-				'username' => Input::get('username'),
+				'email' => Input::get('email'),
 				'password' => Input::get('password')
 			];
 		}
 
-		if(Auth::attempt($userdata)) {
-			return Redirect::intended('/');
-		} else {
-			return Redirect::to('login');
-		}
-		return;
+		Auth::attempt($userdata);
+
+		$return_array = ['csrf_token' => csrf_token(), 'user' => $userdata['email']];
+
+		return $this->auth->user();
 	}
 
 	/**
@@ -77,7 +82,7 @@ class AuthController extends BaseController {
 	public function logout()
 	{
 		Auth::logout();
-		return Redirect::to('/');
+		return 'Succesfully logged out';
 	}
 
 }
